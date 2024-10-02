@@ -31,8 +31,10 @@ func InitializeContainer(db database.Db) *controller.ApiContainer {
 
 var container = wire.NewSet(controller.NewApiContainer)
 
-var controllerSet = wire.NewSet(http.NewServer)
+// may have grpc server in the future
+var serverSet = wire.NewSet(http.NewServer)
 
+// handler === controller | with service and repository layers to form 3 layers architecture
 var handlerSet = wire.NewSet(v1.NewStudentHandler)
 
 var serviceSet = wire.NewSet(serviceimplement.NewStudentService)
