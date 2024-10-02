@@ -1,0 +1,25 @@
+definitions:
+  model.Student:
+    properties:
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/students:
+    get:
+      description: Get all students
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Student'
+            type: array
+      summary: Get all students
+      tags:
+      - Student
+swagger: "2.0"

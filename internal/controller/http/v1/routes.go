@@ -2,6 +2,8 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	"github.com/swaggo/gin-swagger"
 )
 
 func MapRoutes(router *gin.Engine, studentHandler *StudentHandler) {
@@ -12,4 +14,5 @@ func MapRoutes(router *gin.Engine, studentHandler *StudentHandler) {
 			students.GET("/", studentHandler.GetAll)
 		}
 	}
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 }

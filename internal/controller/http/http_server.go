@@ -9,8 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 
 	v1 "github.com/VuKhoa23/advanced-web-be/internal/controller/http/v1"
-
-	"github.com/swaggo/swag"
 )
 
 type Server struct {
@@ -35,21 +33,4 @@ func (s *Server) Run() {
 		return
 	}
 	fmt.Println("Server running at " + httpServerInstance.Addr)
-}
-
-func init() {
-	dat, err := os.ReadFile("./docs/swagger.json")
-	if err != nil {
-		println("error when reading specs, please regenerate swagger")
-	}
-	spec := &swag.Spec{
-		Version:          "1.0",
-		BasePath:         "/api/v1/",
-		Schemes:          []string{},
-		Title:            "API specs",
-		Description:      "SAPI specs",
-		InfoInstanceName: "swagger",
-		SwaggerTemplate:  string(dat),
-	}
-	swag.Register(spec.InstanceName(), spec)
 }
