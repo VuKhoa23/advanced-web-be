@@ -2,10 +2,11 @@ package http
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
 	"strconv"
+
+	"github.com/gin-gonic/gin"
 
 	v1 "github.com/VuKhoa23/advanced-web-be/internal/controller/http/v1"
 
@@ -13,11 +14,11 @@ import (
 )
 
 type Server struct {
-	testHandler *v1.StudentHandler
+	studentHandler *v1.StudentHandler
 }
 
-func NewServer(testHandler *v1.StudentHandler) *Server {
-	return &Server{testHandler: testHandler}
+func NewServer(studentHandler *v1.StudentHandler) *Server {
+	return &Server{studentHandler: studentHandler}
 }
 
 func (s *Server) Run() {
@@ -28,7 +29,7 @@ func (s *Server) Run() {
 		Handler: router,
 	}
 
-	v1.MapRoutes(router, s.testHandler)
+	v1.MapRoutes(router, s.studentHandler)
 	err := httpServerInstance.ListenAndServe()
 	if err != nil {
 		return
